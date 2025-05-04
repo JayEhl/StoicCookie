@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
-import { getRandomQuote } from '../data/quotes';
+import { getDailyQuote } from '../data/quotes';
 
 interface Quote {
   text: string;
@@ -13,12 +13,13 @@ const FortuneCookie: React.FC = () => {
   const [showQuote, setShowQuote] = useState(false);
   const { isDark } = useTheme();
 
+  useEffect(() => {
+    setQuote(getDailyQuote());
+  }, []);
+
   const handleClick = () => {
     if (!isOpen) {
       setIsOpen(true);
-      const newQuote = getRandomQuote();
-      setQuote(newQuote);
-      
       setTimeout(() => {
         setShowQuote(true);
       }, 500);
@@ -26,7 +27,6 @@ const FortuneCookie: React.FC = () => {
       setShowQuote(false);
       setTimeout(() => {
         setIsOpen(false);
-        setQuote(getRandomQuote());
       }, 500);
     }
   };

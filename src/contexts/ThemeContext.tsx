@@ -17,7 +17,6 @@ interface ThemeProviderProps {
 }
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  // Check if dark mode was previously selected
   const [isDark, setIsDark] = useState(() => {
     const savedTheme = localStorage.getItem('theme');
     return savedTheme === 'dark' || 
@@ -25,16 +24,14 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   });
 
   useEffect(() => {
-    // Apply dark mode class to body
     if (isDark) {
-      document.body.classList.add('bg-amber-900');
+      document.body.classList.add('bg-[#1c472b]');
       document.body.classList.remove('bg-amber-50');
     } else {
-      document.body.classList.add('bg-amber-50');
-      document.body.classList.remove('bg-amber-900');
+      document.body.classList.add('bg-[#1c472b]');
+      document.body.classList.remove('bg-amber-50');
     }
     
-    // Save preference to localStorage
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
   }, [isDark]);
 

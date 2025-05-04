@@ -126,9 +126,22 @@ const stoicQuotes: Quote[] = [
   }
 ];
 
-export const getRandomQuote = (): Quote => {
+export const getDailyQuote = (): Quote => {
+  const today = new Date().toLocaleDateString();
+  const storedQuote = localStorage.getItem('dailyQuote');
+  const storedDate = localStorage.getItem('quoteDate');
+  
+  if (storedQuote && storedDate === today) {
+    return JSON.parse(storedQuote);
+  }
+  
   const randomIndex = Math.floor(Math.random() * stoicQuotes.length);
-  return stoicQuotes[randomIndex];
+  const newQuote = stoicQuotes[randomIndex];
+  
+  localStorage.setItem('dailyQuote', JSON.stringify(newQuote));
+  localStorage.setItem('quoteDate', today);
+  
+  return newQuote;
 };
 
 export default stoicQuotes;
