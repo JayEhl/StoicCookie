@@ -2,6 +2,8 @@ import React from 'react';
 import FortuneCookie from './components/FortuneCookie';
 import { ThemeProvider } from './contexts/ThemeContext';
 
+// Updated with improved design
+
 function App() {
   return (
     <ThemeProvider>
