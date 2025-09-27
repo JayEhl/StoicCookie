@@ -44,14 +44,14 @@
 
   .cookie-half {
     @apply absolute w-full h-full transition-all duration-700 ease-in-out;
-    background: linear-gradient(135deg, #f3c06b, #e4a94f);
+    background: linear-gradient(135deg, #8b5a2b, #6d4420);
     border-radius: 100% 0 60% 40% / 60% 0 40% 40%;
-    box-shadow: inset -2px -2px 4px rgba(0,0,0,0.1),
-                2px 2px 4px rgba(0,0,0,0.1);
+    box-shadow: inset -2px -2px 4px rgba(0,0,0,0.3),
+                2px 2px 8px rgba(0,0,0,0.4);
   }
 
   .cookie-dark .cookie-half {
-    background: linear-gradient(135deg, #b47d2e, #8b5e1c);
+    background: linear-gradient(135deg, #5d3a1a, #4a2e14);
   }
 
   .cookie-half.left {
