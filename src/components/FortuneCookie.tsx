@@ -45,12 +45,12 @@ const FortuneCookie: React.FC = () => {
       
       <div 
         className={`fortune-paper ${showQuote ? 'opacity-100' : 'opacity-0'} 
-                   ${isDark ? 'bg-amber-900 text-amber-100 border-amber-700' : 'bg-amber-50 text-amber-900 border-amber-200'}`}
+                   ${isDark ? 'dark-mode text-white' : 'text-gray-800'}`}
       >
         {quote && (
           <>
-            <p className={`quote-text ${isDark ? 'text-amber-100' : 'text-amber-900'}`}>"{quote.text}"</p>
-            <p className={`quote-author ${isDark ? 'text-amber-200' : 'text-amber-800'}`}>— {quote.author}</p>
+            <p className={`quote-text ${isDark ? 'text-white' : 'text-gray-800'}`}>"{quote.text}"</p>
+            <p className={`quote-author ${isDark ? 'text-gray-200' : 'text-gray-600'}`}>— {quote.author}</p>
           </>
         )}
       </div>
