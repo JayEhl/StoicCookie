@@ -10,7 +10,7 @@
   }
 
   body {
-    @apply font-sans text-amber-900 bg-amber-50;
+    @apply font-sans text-white bg-green-800;
     background-image: url('https://www.transparenttextures.com/patterns/paper.png');
   }
 

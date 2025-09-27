@@ -27,11 +27,11 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   useEffect(() => {
     // Apply dark mode class to body
     if (isDark) {
-      document.body.classList.add('bg-amber-900');
-      document.body.classList.remove('bg-amber-50');
+      document.body.classList.add('bg-green-900');
+      document.body.classList.remove('bg-green-800');
     } else {
-      document.body.classList.add('bg-amber-50');
-      document.body.classList.remove('bg-amber-900');
+      document.body.classList.add('bg-green-800');
+      document.body.classList.remove('bg-green-900');
     }
     
     // Save preference to localStorage
