@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Icon Generator</title>
+</head>
+<body>
+    <canvas id="canvas192" width="192" height="192"></canvas>
+    <canvas id="canvas512" width="512" height="512"></canvas>
+    
+    <script>
+        // Create 192x192 icon
+        const canvas192 = document.getElementById('canvas192');
+        const ctx192 = canvas192.getContext('2d');
+        
+        // Background
+        ctx192.fillStyle = '#166534';
+        ctx192.fillRect(0, 0, 192, 192);
+        
+        // Cookie circle
+        ctx192.fillStyle = '#8b5a2b';
+        ctx192.beginPath();
+        ctx192.arc(96, 96, 70, 0, 2 * Math.PI);
+        ctx192.fill();
+        
+        // Inner circle
+        ctx192.fillStyle = '#6d4420';
+        ctx192.beginPath();
+        ctx192.arc(96, 96, 60, 0, 2 * Math.PI);
+        ctx192.fill();
+        
+        // Fortune paper
+        ctx192.fillStyle = '#fbbf24';
+        ctx192.fillRect(76, 86, 40, 20);
+        
+        // Create 512x512 icon
+        const canvas512 = document.getElementById('canvas512');
+        const ctx512 = canvas512.getContext('2d');
+        
+        // Background
+        ctx512.fillStyle = '#166534';
+        ctx512.fillRect(0, 0, 512, 512);
+        
+        // Cookie circle
+        ctx512.fillStyle = '#8b5a2b';
+        ctx512.beginPath();
+        ctx512.arc(256, 256, 180, 0, 2 * Math.PI);
+        ctx512.fill();
+        
+        // Inner circle
+        ctx512.fillStyle = '#6d4420';
+        ctx512.beginPath();
+        ctx512.arc(256, 256, 160, 0, 2 * Math.PI);
+        ctx512.fill();
+        
+        // Fortune paper
+        ctx512.fillStyle = '#fbbf24';
+        ctx512.fillRect(206, 226, 100, 60);
+        
+        // Download functions
+        function downloadCanvas(canvas, filename) {
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+        
+        // Auto download after 1 second
+        setTimeout(() => {
+            downloadCanvas(canvas192, 'icon-192.png');
+            downloadCanvas(canvas512, 'icon-512.png');
+        }, 1000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" rx="64" fill="#166534"/>
+  <circle cx="256" cy="256" r="180" fill="#8b5a2b"/>
+  <circle cx="256" cy="256" r="160" fill="#6d4420"/>
+  <path d="M206 226 L306 226 L306 286 L206 286 Z" fill="#fbbf24"/>
+  <text x="256" y="320" text-anchor="middle" fill="white" font-family="serif" font-size="32" font-weight="bold">StoicCookie</text>
+</svg>
