@@ -9,11 +9,35 @@ const InstallPrompt: React.FC = () => {
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [showInstallPrompt, setShowInstallPrompt] = useState(false);
 
+  // Check if install prompt should be shown (30-day delay logic)
+  const shouldShowInstallPrompt = (): boolean => {
+    try {
+      const dismissedDate = localStorage.getItem('stoiccookie-install-dismissed');
+      
+      if (!dismissedDate) {
+        return true; // Never dismissed, show prompt
+      }
+      
+      const dismissed = new Date(dismissedDate);
+      const now = new Date();
+      const daysSinceDismissed = Math.floor((now.getTime() - dismissed.getTime()) / (1000 * 60 * 60 * 24));
+      
+      return daysSinceDismissed >= 30; // Show again after 30 days
+    } catch (error) {
+      console.error('Error checking install prompt delay:', error);
+      return true; // Show prompt if error
+    }
+  };
+
   useEffect(() => {
     const handleBeforeInstallPrompt = (e: Event) => {
       e.preventDefault();
       setDeferredPrompt(e as BeforeInstallPromptEvent);
-      setShowInstallPrompt(true);
+      
+      // Only show if not recently dismissed
+      if (shouldShowInstallPrompt()) {
+        setShowInstallPrompt(true);
+      }
     };
 
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
@@ -40,6 +64,14 @@ const InstallPrompt: React.FC = () => {
   };
 
   const handleDismiss = () => {
+    // Store the dismissal date in localStorage
+    try {
+      const now = new Date().toISOString();
+      localStorage.setItem('stoiccookie-install-dismissed', now);
+    } catch (error) {
+      console.error('Error storing install prompt dismissal:', error);
+    }
+    
     setShowInstallPrompt(false);
   };
 
